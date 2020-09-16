@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Login.css";
 import * as firebase from "firebase/app";
 import "firebase/auth";
@@ -6,10 +6,13 @@ import firebaseConfig from "./firebase.config";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import GoogleButton from "react-google-button";
+import { UserContext } from "../../App";
+import { useHistory, useLocation } from "react-router-dom";
 
 firebase.initializeApp(firebaseConfig);
 
 const Login = () => {
+  const [loggedInUser,setLoggedInUser] = useContext(UserContext)
   const provider = new firebase.auth.GoogleAuthProvider();
   const [newUser, setNewUser] = useState(false);
   const [user, setUser] = useState({
@@ -20,12 +23,20 @@ const Login = () => {
     success: false,
   });
 
+  let history = useHistory();
+  let location = useLocation();
+
+  let { from } = location.state || { from: { pathname: "/" } };
+
   const handleGoogleSignIn = (e) => {
     firebase
       .auth()
       .signInWithPopup(provider)
       .then((response) => {
-        console.log(response.user);
+        const {displayName,email} = response.user;
+        const signedInUser = {name: displayName, email: email};
+        setLoggedInUser(signedInUser);
+        history.replace(from);
       })
       .catch(function (error) {
         var errorCode = error.code;
@@ -62,7 +73,8 @@ const Login = () => {
           newUserInfo.error = "";
           newUserInfo.success = true;
           setUser(newUserInfo);
-          updateUserName(user.name)
+          updateUserName(user.name);
+          history.replace(from);
         })
         .catch(function (error) {
           var errorMessage = error.message;
@@ -82,7 +94,11 @@ const Login = () => {
           newUserInfo.error = "";
           newUserInfo.success = true;
           setUser(newUserInfo);
+          const {displayName,email} = response.user;
+          const signedInUser = {name: displayName, email: email};
+          setLoggedInUser(signedInUser);
           console.log(response.user)
+          history.replace(from);
           
         })
         .catch(function (error) {

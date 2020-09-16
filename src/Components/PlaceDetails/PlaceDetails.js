@@ -8,7 +8,7 @@ import {
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import PlaceData from "../../fakeData/PlaceData";
 
 const PlaceDetails = (props) => {
@@ -105,10 +105,11 @@ const PlaceDetails = (props) => {
                     </Grid>
                   </MuiPickersUtilsProvider>
                 </div>
-
+                <Link to="/bookHotel">
                 <button type="submit" class="btn btn-warning btn-lg btn-block">
-                  Submit
+                  Start Booking
                 </button>
+                </Link>
               </form>
             </div>
           </div>
