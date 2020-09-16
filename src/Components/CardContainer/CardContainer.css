@@ -1,0 +1,14 @@
+.card-container{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
+.place-card{
+    background-color: rgba(0, 0, 0, 0.295);
+  
+}
+.form-container{
+    padding: 20px
+}
