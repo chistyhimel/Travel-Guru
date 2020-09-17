@@ -20,11 +20,17 @@
 }
 .banner-img{
     padding-right: 110px;
+    
 }
 .banner-img img{
     border: 5px solid #E0A800;
-    border-radius: 25px;
+    border-radius: 29px;
+     
 }
+/* .banner-img img:hover{
+    border: 5px solid #E0A800;
+    transition: 0.2s
+} */
 .banner-text{
-    margin: 0px 150px;
+    margin: 0px 110px;
 }

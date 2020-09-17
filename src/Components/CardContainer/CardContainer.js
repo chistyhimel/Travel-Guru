@@ -16,8 +16,8 @@ const CardContainer = () => {
         <div className="carousel-inner">
           <div className="carousel-item active">
             <div className="row ">
-              <div className="col-md-8 ">
-                <h1 className="place-name display-1 d-block align-self-center">
+              <div className="col-md-7">
+                <h1 className="place-name display-1">
                   COXE'S BAZAR
                 </h1>
                 <div className="banner-text">
@@ -38,7 +38,7 @@ const CardContainer = () => {
                   </Link>
                 </div>
               </div>
-              <div className="col-md-4 banner-img">
+              <div className="col-md-5 banner-img">
                 <img
                   src="https://i.ibb.co/tYNFpfQ/Sajek.png"
                   className="d-block w-100"
@@ -49,8 +49,8 @@ const CardContainer = () => {
           </div>
           <div className="carousel-item">
             <div className="row">
-              <div className="col-md-8">
-                <h1 className="place-name display-1 d-block align-self-center">
+              <div className="col-md-7">
+                <h1 className="place-name display-1">
                   SREEMANGAL
                 </h1>
                 <div className="banner-text">
@@ -68,7 +68,7 @@ const CardContainer = () => {
                   </Link>
                 </div>
               </div>
-              <div className="col-md-4 banner-img">
+              <div className="col-md-5 banner-img">
                 <img
                   src="https://i.ibb.co/fNsCtqL/Sreemongol.png"
                   className="d-block w-100"
@@ -79,8 +79,8 @@ const CardContainer = () => {
           </div>
           <div className="carousel-item">
             <div className="row">
-              <div className="col-md-8">
-                <h1 className="place-name display-1 d-block align-self-center">
+              <div className="col-md-7">
+                <h1 className="place-name display-1">
                   SUNDARBAN
                 </h1>
                 <div className="banner-text">
@@ -98,7 +98,7 @@ const CardContainer = () => {
                   </Link>
                 </div>
               </div>
-              <div className="col-md-4 banner-img">
+              <div className="col-md-5 banner-img">
                 <img
                   src="https://i.ibb.co/YksFMdf/sundorbon.png"
                   className="d-block w-100"
