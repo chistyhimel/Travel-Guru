@@ -1,5 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./Login.css";
+import fbIcon from "../../img/Icon/fb.png"
+import googleIcon from "../../img/Icon/google.png"
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from "./firebase.config";
@@ -13,7 +15,8 @@ firebase.initializeApp(firebaseConfig);
 
 const Login = () => {
   const [loggedInUser,setLoggedInUser] = useContext(UserContext)
-  const provider = new firebase.auth.GoogleAuthProvider();
+  const googleProvider = new firebase.auth.GoogleAuthProvider();
+  const facebookProvider = new firebase.auth.FacebookAuthProvider();
   const [newUser, setNewUser] = useState(false);
   const [user, setUser] = useState({
     name: "",
@@ -31,12 +34,13 @@ const Login = () => {
   const handleGoogleSignIn = (e) => {
     firebase
       .auth()
-      .signInWithPopup(provider)
+      .signInWithPopup(googleProvider)
       .then((response) => {
         const {displayName,email} = response.user;
         const signedInUser = {name: displayName, email: email};
         setLoggedInUser(signedInUser);
         history.replace(from);
+        console.log(response)
       })
       .catch(function (error) {
         var errorCode = error.code;
@@ -46,6 +50,26 @@ const Login = () => {
       });
     e.preventDefault();
   };
+  const handleFacebookSignIn=(e)=>{
+    firebase.auth().signInWithPopup(facebookProvider).then(function(result) {
+      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+      var token = result.credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+      console.log(result)
+      // ...
+    }).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      // ...
+    });
+    e.preventDefault();
+  }
 
   const handleBlur = (e) => {
     let isFieldValid = true;
@@ -139,6 +163,7 @@ const Login = () => {
               aria-describedby="emailHelp"
               placeholder="Name"
               onBlur={handleBlur}
+              required
             />
           </div>
         )}
@@ -152,6 +177,7 @@ const Login = () => {
             aria-describedby="emailHelp"
             placeholder="Email"
             onBlur={handleBlur}
+            required
           />
         </div>
 
@@ -163,6 +189,7 @@ const Login = () => {
             id="exampleInputPassword1"
             placeholder="Password"
             onBlur={handleBlur}
+            required
           />
         </div>
 
@@ -177,20 +204,20 @@ const Login = () => {
         )}
       </form>
       <p className="text-dark d-block text-center">
-        don't have an account?
+        {newUser?"already have an account?" : "don't have an account?"}
         <span
           className="text-warning"
           style={{ cursor: "pointer" }}
           onClick={() => setNewUser(!newUser)}
         >
-          <u>Create an account</u>
+          <u>{newUser ?"Log in" : "Create an account"}</u>
         </span>{" "}
       </p>
 
       <p className="text-center text-bold text-dark pt-2">or</p>
-      <button className="btn btn-block btn-dark">continue with facebook</button>
-      <button className="btn btn-block btn-dark" onClick={handleGoogleSignIn}>
-        continue with Google
+      <button className="btn btn-block btn-dark" onClick={handleFacebookSignIn}> <img src={fbIcon} style={{width:"30px"}} alt=""/> continue with facebook</button>
+      <button className="btn btn-block btn-dark" onClick={handleGoogleSignIn}><img src={googleIcon} style={{width:"25px"}} alt=""/>
+          continue with Google
       </button>
     </div>
   );

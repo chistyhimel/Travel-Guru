@@ -1,8 +1,9 @@
 import React from "react";
 import "./Header.css";
-import Logo from "../../img/Logo.png"
+import Logo from "../../img/Logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <div>
@@ -12,7 +13,7 @@ const Header = () => {
       >
         <div className="container">
           <a href="index.html" className="navbar-brand">
-            <img src={Logo} alt=""/>
+            <img src={Logo} alt="" />
           </a>
           <button
             className="navbar-toggler"
@@ -24,13 +25,19 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <ul className="navbar-nav ml-auto">
               <div className="search_box d-inline">
-                  <input type="text" placeholder="what are you looking for?" className="form-control mr-sm-2"/>
-                  <FontAwesomeIcon icon={faSearch} className="fa-search" />
+                <input
+                  type="text"
+                  placeholder="what are you looking for?"
+                  className="form-control mr-sm-2"
+                />
+                <FontAwesomeIcon icon={faSearch} className="fa-search" />
               </div>
-              <li className="nav-item ">
-                <a href="#home" className="nav-link text-light">
-                  News
-                </a>
+              <li class="nav-item">
+                <Link to="/home">
+                <a class="nav-link" href="#">Home</a>
+                </Link>
+                  
+                
               </li>
               <li className="nav-item">
                 <a href="#explore-head-section" className="nav-link text-light">
@@ -47,14 +54,13 @@ const Header = () => {
                   Contact
                 </a>
               </li>
-              <button type="button" className="btn btn-warning text-light">Login</button>
+              <button type="button" className="btn btn-warning text-light">
+                Login
+              </button>
             </ul>
           </div>
         </div>
       </nav>
-     
-
-
     </div>
   );
 };
