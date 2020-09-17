@@ -20,11 +20,20 @@
     outline: none;
   }
   
-  .fa-search{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 25px;
-    color: #fff;
-    font-size: 25px;
-  }
+ .search-place{
+   background: rgba(0, 0, 0, 0);
+   outline: none;
+   
+
+ }
+.search-place:focus{
+  background: rgba(0, 0, 0, 0) !important;
+  box-shadow: none;
+  /* border-style: none !important; */
+  border-color: #E0A800;
+}
+.search-place:active{
+  background: rgba(0, 0, 0, 0) !important;
+  box-shadow: none;
+  
+}

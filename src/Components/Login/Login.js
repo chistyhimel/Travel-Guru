@@ -37,7 +37,7 @@ const Login = () => {
       .signInWithPopup(googleProvider)
       .then((response) => {
         const {displayName,email} = response.user;
-        const signedInUser = {name: displayName, email: email};
+        const signedInUser = {name: displayName, email: email, loggedIn:true};
         setLoggedInUser(signedInUser);
         history.replace(from);
         console.log(response)
@@ -52,11 +52,9 @@ const Login = () => {
   };
   const handleFacebookSignIn=(e)=>{
     firebase.auth().signInWithPopup(facebookProvider).then(function(result) {
-      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       var token = result.credential.accessToken;
-      // The signed-in user info.
       var user = result.user;
-      console.log(result)
+      console.log(user)
       // ...
     }).catch(function(error) {
       // Handle Errors here.
@@ -93,11 +91,16 @@ const Login = () => {
         .auth()
         .createUserWithEmailAndPassword(user.email, user.password)
         .then((response) => {
+          console.log(response.user)
+          const {displayName,email} = response.user;
+          const signedInUser = {name: user.name , email: email, loggedIn:true};
+          setLoggedInUser(signedInUser);
           const newUserInfo = { ...user };
           newUserInfo.error = "";
           newUserInfo.success = true;
           setUser(newUserInfo);
           updateUserName(user.name);
+
           history.replace(from);
         })
         .catch(function (error) {
@@ -119,9 +122,8 @@ const Login = () => {
           newUserInfo.success = true;
           setUser(newUserInfo);
           const {displayName,email} = response.user;
-          const signedInUser = {name: displayName, email: email};
+          const signedInUser = {name: displayName, email: email, loggedIn:true};
           setLoggedInUser(signedInUser);
-          console.log(response.user)
           history.replace(from);
           
         })
@@ -154,10 +156,10 @@ const Login = () => {
       <h2 className="text-dark ">{newUser ? "Create an account" : "Log in"}</h2>
       <form onSubmit={handleSubmit}>
         {newUser && (
-          <div class="form-group">
+          <div className="form-group">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               name="name"
               id="name"
               aria-describedby="emailHelp"
@@ -168,11 +170,11 @@ const Login = () => {
           </div>
         )}
 
-        <div class="form-group">
+        <div className="form-group">
           <input
             type="email"
             name="email"
-            class="form-control"
+            className="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Email"
@@ -180,20 +182,33 @@ const Login = () => {
             required
           />
         </div>
+        <div className="form-group">
+            <input
+              type="password"
+              name="password"
+              className="form-control"
+              id="exampleInputPassword1"
+              placeholder="Password"
+              onBlur={handleBlur}
+              required
+            />
+          </div>
+          {
+            newUser && <div className="form-group">
+            <input
+              type="password"
+              name="confirmPassword"
+              className="form-control"
+              id="exampleInputPassword1"
+              placeholder="Confirm Password"
+              onBlur={handleBlur}
+              required
+            />
+          </div>
+          }
+        
 
-        <div class="form-group">
-          <input
-            type="password"
-            name="password"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Password"
-            onBlur={handleBlur}
-            required
-          />
-        </div>
-
-        <button type="submit" class="btn btn-warning btn-block">
+        <button type="submit" className="btn btn-warning btn-block">
           {newUser ? "Sign Up" : "Sign in"}
         </button>
         <small className="text-danger d-block text-center">{user.error}</small>

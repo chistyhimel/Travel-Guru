@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Header.css";
 import Logo from "../../img/Logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../App";
 const Header = () => {
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  console.log(loggedInUser);
   return (
     <div>
       <nav
@@ -13,7 +16,9 @@ const Header = () => {
       >
         <div className="container">
           <a href="index.html" className="navbar-brand">
+            <Link to="/home">
             <img src={Logo} alt="" />
+            </Link>
           </a>
           <button
             className="navbar-toggler"
@@ -24,39 +29,53 @@ const Header = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <ul className="navbar-nav ml-auto">
-              <div className="search_box d-inline">
-                <input
-                  type="text"
-                  placeholder="what are you looking for?"
-                  className="form-control mr-sm-2"
-                />
-                <FontAwesomeIcon icon={faSearch} className="fa-search" />
-              </div>
-              <li class="nav-item">
-                <Link to="/home">
-                <a class="nav-link" href="#">Home</a>
-                </Link>
-                  
+              <form className="form-inline my-2 my-lg-0">
                 
+                  <input
+                    className="form-control search-place"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                    aria-describedby="basic-addon1"
+                  />
+
+                
+              </form>
+              <li className="nav-item">
+                <Link to="/home">
+                  <a className="nav-link">
+                    Home
+                  </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#explore-head-section" className="nav-link text-light">
+                <a className="nav-link text-light">
                   Description
                 </a>
               </li>
               <li className="nav-item">
-                <a href="#create-head-section" className="nav-link text-light">
+                <a className="nav-link text-light">
                   Blog
                 </a>
               </li>
               <li className="nav-item">
-                <a href="#share-head-section" className="nav-link text-light">
+                <a className="nav-link text-light">
                   Contact
                 </a>
               </li>
-              <button type="button" className="btn btn-warning text-light">
-                Login
-              </button>
+              {loggedInUser.loggedIn ? (
+                <li className="nav-item">
+                  <a className="nav-link text-warning">
+                    {loggedInUser.name}
+                  </a>
+                </li>
+              ) : (
+                <Link to="/login">
+                  <button type="button" className="btn btn-warning text-light">
+                    Login
+                  </button>
+                </Link>
+              )}
             </ul>
           </div>
         </div>

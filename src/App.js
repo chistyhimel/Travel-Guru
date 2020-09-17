@@ -12,10 +12,12 @@ import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 export const UserContext = createContext()
 
 function App() {
-  const [loggedInUser,setLoggedInUser] = useState({})
+  const [loggedInUser,setLoggedInUser] = useState({
+    loggedIn: false
+  })
   return (
     <UserContext.Provider value={[loggedInUser,setLoggedInUser]}>
-      <p>Name:{loggedInUser.name}</p>
+     
     <Router>
       <Switch>
         <div className="background-img text-light">

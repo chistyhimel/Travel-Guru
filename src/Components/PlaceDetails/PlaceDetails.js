@@ -36,7 +36,7 @@ const PlaceDetails = (props) => {
         <div className="row">
           <div className="col-md-6">
             <div>
-              <h1 className="display-2">{place.name}</h1>
+              <h1 className="place-name display-1">{place.name}</h1>
   <p>{place.description}</p>
             </div>
           </div>

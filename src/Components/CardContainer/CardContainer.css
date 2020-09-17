@@ -1,14 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;700&display=swap');
 .card-container{
     position: fixed;
     top: 50%;
     left: 50%;
-    /* bring your own prefixes */
     transform: translate(-50%, -50%);
 }
 .place-card{
     background-color: rgba(0, 0, 0, 0.295);
-  
+    
 }
 .form-container{
     padding: 20px
+}
+.place-name{
+    font-family: 'Bebas Neue', cursive;
+    font-weight: 500;
+    line-height: 100px;
+    text-align: center;
+}
+.banner-img{
+    padding-right: 110px;
+}
+.banner-img img{
+    border: 5px solid #E0A800;
+    border-radius: 25px;
+}
+.banner-text{
+    margin: 0px 150px;
 }
