@@ -44,7 +44,7 @@ const PlaceDetails = (props) => {
           <div className="col-md-6 place-details-booking-card p-4">
             <div>
               <form>
-                <div class="form-group">
+                <div className="form-group">
                   <label
                     for="exampleInputEmail1"
                     className="text-dark font-weight-bold"
@@ -59,7 +59,7 @@ const PlaceDetails = (props) => {
                     placeholder="Enter your location"
                   />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label
                     for="exampleInputPassword1"
                     className="text-dark font-weight-bold"
@@ -108,7 +108,7 @@ const PlaceDetails = (props) => {
                 <Link to={`/bookHotel/${place.name}`}>
                   <button
                     type="submit"
-                    class="btn btn-warning btn-lg btn-block"
+                    className="btn btn-warning btn-lg btn-block"
                   >
                     Start Booking
                   </button>

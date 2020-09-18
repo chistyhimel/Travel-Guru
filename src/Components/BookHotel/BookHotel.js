@@ -1,15 +1,10 @@
-import React, { Component } from "react";
-import GoogleMapReact from "google-map-react";
-import Iframe from "react-iframe";
+import React from "react";
 import "./BookHotel.css";
-import img1 from "../../img/Image/Rectangle 26.png";
-import img2 from "../../img/Image/Rectangle 27.png";
-import img3 from "../../img/Image/Rectangle 28.png";
 import Map from "../../Map/Map";
 
 const BookHotel = () => {
   return (
-    <div className="container book-container">
+    <div className="container book-container"> 
       <div class="row text-dark">
         <div class="col-md-6">
             

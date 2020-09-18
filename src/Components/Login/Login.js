@@ -5,9 +5,7 @@ import googleIcon from "../../img/Icon/google.png";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from "./firebase.config";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import GoogleButton from "react-google-button";
+
 import { UserContext } from "../../App";
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -59,20 +57,14 @@ const Login = () => {
       .auth()
       .signInWithPopup(facebookProvider)
       .then(function (result) {
-        var token = result.credential.accessToken;
         var user = result.user;
         console.log(user);
-        // ...
       })
       .catch(function (error) {
-        // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        // The email of the user's account used.
         var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
-        // ...
       });
     e.preventDefault();
   };
@@ -209,20 +201,6 @@ const Login = () => {
             required
           />
         </div>
-        {newUser && (
-          <div className="form-group">
-            <input
-              type="password"
-              name="confirmPassword"
-              className="form-control"
-              id="exampleInputPassword1"
-              placeholder="Confirm Password"
-              onBlur={handleBlur}
-              required
-            />
-          </div>
-        )}
-        {}
 
         <button type="submit" className="btn btn-warning btn-block">
           {newUser ? "Sign Up" : "Sign in"}
