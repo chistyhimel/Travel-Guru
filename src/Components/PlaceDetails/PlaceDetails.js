@@ -22,6 +22,7 @@ const PlaceDetails = (props) => {
   const { placeName } = useParams();
   const [places, setPlaces] = useState(PlaceData);
   const [place, setPlace] = useState([]);
+  
 
   useEffect(() => {
     const currentPlace = places.find(
@@ -105,7 +106,7 @@ const PlaceDetails = (props) => {
                     </Grid>
                   </MuiPickersUtilsProvider>
                 </div>
-                <Link to="/bookHotel">
+                <Link to={`/bookHotel/${place.name}`}>
                 <button type="submit" class="btn btn-warning btn-lg btn-block">
                   Start Booking
                 </button>

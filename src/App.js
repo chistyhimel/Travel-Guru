@@ -9,6 +9,7 @@ import Login from "./Components/Login/Login";
 import BookHotel from "./Components/BookHotel/BookHotel";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 
+
 export const UserContext = createContext()
 
 function App() {
@@ -23,14 +24,14 @@ function App() {
         <div className="background-img text-light">
           <Header></Header>
           <Route path="/home">
-            <CardContainer></CardContainer>
+            <CardContainer></CardContainer> 
           </Route>
           <Route path="/placeDetail/:placeName">
             <PlaceDetails></PlaceDetails>
           </Route>
-          <PrivateRoute path="/bookHotel">
+          <Route path="/bookHotel/:travelPlace">
             <BookHotel></BookHotel>
-          </PrivateRoute>
+          </Route>
           <Route path="/login">
             <Login></Login>
           </Route>
