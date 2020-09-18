@@ -29,9 +29,9 @@ function App() {
           <Route path="/placeDetail/:placeName">
             <PlaceDetails></PlaceDetails>
           </Route>
-          <Route path="/bookHotel/:travelPlace">
+          <PrivateRoute path="/bookHotel/:travelPlace">
             <BookHotel></BookHotel>
-          </Route>
+          </PrivateRoute>
           <Route path="/login">
             <Login></Login>
           </Route>

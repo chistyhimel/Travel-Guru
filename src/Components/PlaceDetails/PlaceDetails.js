@@ -22,7 +22,6 @@ const PlaceDetails = (props) => {
   const { placeName } = useParams();
   const [places, setPlaces] = useState(PlaceData);
   const [place, setPlace] = useState([]);
-  
 
   useEffect(() => {
     const currentPlace = places.find(
@@ -38,7 +37,7 @@ const PlaceDetails = (props) => {
           <div className="col-md-6">
             <div>
               <h1 className="place-name display-1">{place.name}</h1>
-  <p>{place.description}</p>
+              <p>{place.description}</p>
             </div>
           </div>
 
@@ -107,9 +106,12 @@ const PlaceDetails = (props) => {
                   </MuiPickersUtilsProvider>
                 </div>
                 <Link to={`/bookHotel/${place.name}`}>
-                <button type="submit" class="btn btn-warning btn-lg btn-block">
-                  Start Booking
-                </button>
+                  <button
+                    type="submit"
+                    class="btn btn-warning btn-lg btn-block"
+                  >
+                    Start Booking
+                  </button>
                 </Link>
               </form>
             </div>

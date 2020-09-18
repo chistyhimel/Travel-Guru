@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { GoogleMap, Marker, withGoogleMap, withScriptjs } from "react-google-maps";
+import {
+  GoogleMap,
+  Marker,
+  withGoogleMap,
+  withScriptjs,
+} from "react-google-maps";
 import { useParams } from "react-router-dom";
 import PlaceData from "../fakeData/PlaceData";
 
@@ -15,16 +20,14 @@ const Map = () => {
   }, []);
   console.log(place.lng);
 
-
   function gMap() {
     return (
       <GoogleMap
-        defaultZoom={15}
-        defaultCenter={{ lat: place.lat, lng: place.lng }}>
-               <Marker 
-               position={{lat: place.lat, lng: place.lng}}
-                />
-        </GoogleMap>
+        defaultZoom={10}
+        defaultCenter={{ lat: place.lat, lng: place.lng }}
+      >
+        <Marker position={{ lat: place.lat, lng: place.lng }} />
+      </GoogleMap>
     );
   }
 
