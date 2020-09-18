@@ -39,10 +39,10 @@ function App() {
           <Route exact path="/">
           <CardContainer></CardContainer>
           </Route>
-          <Route path="*">
-            <NotFound></NotFound>
-          </Route>
+         <Route path="*">
+					</Route>
         </div>
+        
       </Switch>
     </Router>
     </UserContext.Provider>

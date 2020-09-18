@@ -47,9 +47,10 @@ const Header = () => {
                   </a>
                 </Link>
               </li>
+              
               <li className="nav-item">
                 <a className="nav-link text-light">
-                  Description
+                  Contact
                 </a>
               </li>
               <li className="nav-item">
@@ -57,17 +58,17 @@ const Header = () => {
                   Blog
                 </a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link text-light">
-                  Contact
-                </a>
-              </li>
               {loggedInUser.loggedIn ? (
-                <li className="nav-item">
+                <>
+                  <li className="nav-item">
                   <a className="nav-link text-warning">
                     {loggedInUser.name}
                   </a>
                 </li>
+                <button type="button" className="btn btn-warning text-light" onClick={() =>window.location.reload()}>
+                    Logout
+                  </button>
+              </>
               ) : (
                 <Link to="/login">
                   <button type="button" className="btn btn-warning text-light">

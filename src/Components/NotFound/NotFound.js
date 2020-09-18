@@ -2,8 +2,8 @@ import React from "react";
 
 const NotFound = () => {
   return (
-    <div className=" card-container">
-      <div class="alert alert-danger container" role="alert">
+    <div className=" ">
+      <div class="alert alert-danger containe">
         <h1 class="alert-heading">404</h1>
         <h5>
           Page not found!!!
