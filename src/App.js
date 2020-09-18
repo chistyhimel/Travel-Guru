@@ -8,6 +8,7 @@ import PlaceDetails from "./Components/PlaceDetails/PlaceDetails";
 import Login from "./Components/Login/Login";
 import BookHotel from "./Components/BookHotel/BookHotel";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import NotFound from "./Components/NotFound/NotFound";
 
 
 export const UserContext = createContext()
@@ -37,6 +38,9 @@ function App() {
           </Route>
           <Route exact path="/">
           <CardContainer></CardContainer>
+          </Route>
+          <Route path="*">
+            <NotFound></NotFound>
           </Route>
         </div>
       </Switch>

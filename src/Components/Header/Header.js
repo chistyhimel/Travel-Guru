@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../../App";
 const Header = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-  console.log(loggedInUser);
   return (
     <div>
       <nav

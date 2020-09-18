@@ -37,7 +37,7 @@ const Map = () => {
         loadingElement={<div style={{ height: `702px` }} />}
         containerElement={<div style={{ height: `702px` }} />}
         mapElement={
-          <div style={{ width: "100%", height: "83%", borderRadius: "8px" }} />
+          <div style={{ width: "100%", height: "96%", borderRadius: "8px" }} />
         }
       />
     </div>
